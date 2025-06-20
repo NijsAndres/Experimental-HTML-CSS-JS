@@ -1,0 +1,58 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --card-color: #f2f2f2;
+}
+
+.dark {
+  --bg-color: #121212;
+  --text-color: #f5f5f5;
+  --card-color: #1e1e1e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+  padding: 2rem;
+  background-color: var(--card-color);
+  max-width: 600px;
+  margin: 2rem auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.c-theme__togglecontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem;
+  background-color: var(--bg-color);
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 0.25rem;
+  gap: 0.25rem;
+}
+.c-theme__toggle {
+  border: none;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  width: 2rem;
+  aspect-ratio: 1/1;
+  border-radius: 0.25rem;
+  transition: all 0.3s ease-in-out;
+}
+.c-theme__toggle--active, .c-theme__toggle:hover {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
