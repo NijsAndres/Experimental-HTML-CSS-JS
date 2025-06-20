@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Theme Toggle Example</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="script/app.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Hello, World!</h1>
+        <p>This is a basic light/dark theme toggle example.</p>
+        <button class="js-theme-toggle">Toggle Theme</button>
+    </div>
+
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Check for saved preference
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedTheme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
+        html.classList.add(savedTheme);
+
+        toggleBtn.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const newTheme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
+</body>
+
+</html>
