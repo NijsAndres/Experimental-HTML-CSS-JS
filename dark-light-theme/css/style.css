@@ -10,6 +10,11 @@
   --card-color: #1e1e1e;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   font-family: sans-serif;
@@ -27,18 +32,27 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-button {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  background: none;
-  border: 1px solid var(--text-color);
-  color: var(--text-color);
-  border-radius: 4px;
-  transition: background 0.3s;
+.c-theme__togglecontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem;
+  background-color: var(--bg-color);
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 0.25rem;
+  gap: 0.25rem;
 }
-
-button:hover {
-  background: var(--text-color);
+.c-theme__toggle {
+  border: none;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  width: 2rem;
+  aspect-ratio: 1/1;
+  border-radius: 0.25rem;
+  transition: all 0.3s ease-in-out;
+}
+.c-theme__toggle--active, .c-theme__toggle:hover {
+  background-color: var(--text-color);
   color: var(--bg-color);
 }

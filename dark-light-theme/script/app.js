@@ -6,12 +6,23 @@ const html = document.documentElement;
 // #region ***  Callback-Visualisation - show___         ***********
 
 const showTheme = () => {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const savedTheme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
-    html.classList.add(savedTheme);
-    listenToThemeChange();
-}
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const savedTheme = localStorage.getItem("theme") || (prefersDark ? "dark" : "light");
+  html.classList.add(savedTheme);
+  showThemeToggle(savedTheme);
+  listenToThemeChange();
+};
 
+const showThemeToggle = (theme) => {
+  const themeToggleButtons = document.querySelectorAll(".js-theme-toggle");
+  if (theme === "light") {
+    themeToggleButtons[0].classList.add("c-theme__toggle--active");
+    themeToggleButtons[1].classList.remove("c-theme__toggle--active");
+  } else {
+    themeToggleButtons[0].classList.remove("c-theme__toggle--active");
+    themeToggleButtons[1].classList.add("c-theme__toggle--active");
+  }
+};
 
 // #endregion
 
@@ -24,22 +35,25 @@ const showTheme = () => {
 // #region ***  Event Listeners - listenTo___            ***********
 
 const listenToThemeChange = () => {
-    const themeToggleButton = document.querySelector('.js-theme-toggle');
-    themeToggleButton.addEventListener('click', () => {
-        html.classList.toggle('dark');
-        const newTheme = html.classList.contains('dark') ? 'dark' : 'light';
-        localStorage.setItem('theme', newTheme);
-    })
-}
+  const themeToggleButtons = document.querySelectorAll(".js-theme-toggle");
+  for (const button of themeToggleButtons) {
+    button.addEventListener("click", () => {
+      html.classList.toggle("dark");
+      const newTheme = html.classList.contains("dark") ? "dark" : "light";
+      showThemeToggle(newTheme);
+      localStorage.setItem("theme", newTheme);
+    });
+  }
+};
 
 // #endregion
 
 // #region ***  Init / DOMContentLoaded                  ***********
 
 const init = () => {
-    showTheme();
-}
+  showTheme();
+};
 
-document.addEventListener('DOMContentLoaded',init);
+document.addEventListener("DOMContentLoaded", init);
 
 // #endregion
